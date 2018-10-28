@@ -11,7 +11,8 @@
         http://www.springframework.org/schema/context/spring-context.xsd  
         http://www.springframework.org/schema/tx    
         http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">  
-  
+       <context:component-scan base-package="com.cjl.*" /> 
+  <!-- <bean id="userService" class="com.cjl.service.impl.UserServiceImpl"></bean> -->
     <!-- Mybatis 和 Spring的整合 -->  
     <!-- 1.数据源：DriverManagerDataSource -->  
     <bean id="dataSource"  

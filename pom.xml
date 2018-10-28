@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.dossp</groupId>
-	<artifactId>crp-score</artifactId>
+	<artifactId>ssmtest</artifactId>
 	<version>1.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
@@ -16,12 +16,6 @@
 		<pagehelper.version>4.1.3</pagehelper.version>
 	</properties>
 
-	<scm>
-		<connection>scm:git:git@gitlab.dossp.com:cofco/crp-score.git</connection>
-		<developerConnection>scm:git:git@gitlab.dossp.com:cofco/crp-score.git</developerConnection>
-		<url>http://gitlab.dossp.com/cofco/crp-score</url>
-		<tag>HEAD</tag>
-	</scm>
 
 	<distributionManagement>
 		<repository>
@@ -35,63 +29,6 @@
 			<url>http://10.0.0.12:8081/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
-
-	<profiles>
-		<profile>
-			<id>develop</id>
-			<properties>
-				<jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
-				<jdbc.url>jdbc:mysql://10.6.46.215:3306/crp_score?characterEncoding=utf8</jdbc.url>
-				<jdbc.username>crp</jdbc.username>
-				<jdbc.password>%Crp123456</jdbc.password>
-				<jdbc.initialSize>1</jdbc.initialSize>
-				<jdbc.minIdle>1</jdbc.minIdle>
-				<jdbc.maxActive>10</jdbc.maxActive>
-				<jdbc.maxWait>3000</jdbc.maxWait>
-				<jdbc.removeAbandoned>true</jdbc.removeAbandoned>
-				<jdbc.removeAbandonedTimeout>300</jdbc.removeAbandonedTimeout>
-				<jdbc.logAbandoned>false</jdbc.logAbandoned>
-				<upload.path>d:/data/crp-score</upload.path>
-			</properties>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-		</profile>
-		<profile>
-			<id>test</id>
-			<properties>
-				<jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
-				<jdbc.url>jdbc:mysql://10.6.46.215:3306/crp_score_test?characterEncoding=utf8</jdbc.url>
-				<jdbc.username>crp</jdbc.username>
-				<jdbc.password>%Crp123456</jdbc.password>
-				<jdbc.initialSize>1</jdbc.initialSize>
-				<jdbc.minIdle>1</jdbc.minIdle>
-				<jdbc.maxActive>10</jdbc.maxActive>
-				<jdbc.maxWait>3000</jdbc.maxWait>
-				<jdbc.removeAbandoned>true</jdbc.removeAbandoned>
-				<jdbc.removeAbandonedTimeout>300</jdbc.removeAbandonedTimeout>
-				<jdbc.logAbandoned>true</jdbc.logAbandoned>
-				<upload.path>/opt/data/crp-score</upload.path>
-			</properties>
-		</profile>
-		<profile>
-			<id>production</id>
-			<properties>
-				<jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
-				<jdbc.url>jdbc:mysql://10.6.46.204:3306/crp_score?characterEncoding=utf8</jdbc.url>
-				<jdbc.username>crp_score</jdbc.username>
-				<jdbc.password>%Crp_score123456</jdbc.password>
-				<jdbc.initialSize>5</jdbc.initialSize>
-				<jdbc.minIdle>5</jdbc.minIdle>
-				<jdbc.maxActive>50</jdbc.maxActive>
-				<jdbc.maxWait>3000</jdbc.maxWait>
-				<jdbc.removeAbandoned>true</jdbc.removeAbandoned>
-				<jdbc.removeAbandonedTimeout>300</jdbc.removeAbandonedTimeout>
-				<jdbc.logAbandoned>false</jdbc.logAbandoned>
-				<upload.path>/opt/data/crp-score-upload</upload.path>
-			</properties>
-		</profile>
-	</profiles>
 
 	<dependencies>
 
@@ -195,12 +132,12 @@
 			<version>1.7.21</version>
 		</dependency>
 
-		<dependency>
+	<!-- 	<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.9</version>
 			<scope>test</scope>
-		</dependency>
+		</dependency> -->
 
 		<!-- Servlet -->
 		<dependency>

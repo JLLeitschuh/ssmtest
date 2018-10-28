@@ -1,17 +1,17 @@
 package com.cjl.mapper;
 
-import com.cjl.model.User;
+import com.cjl.model.UserModel;
 
 public interface UserMapper {
-    int deleteByPrimaryKey(String userId);
-
-    int insert(User record);
-
-    int insertSelective(User record);
-
-    User selectByPrimaryKey(String userId);
-
-    int updateByPrimaryKeySelective(User record);
-
-    int updateByPrimaryKey(User record);
-}
+	
+   //  @Select("SELECT * FROM func_user WHERE id = #{id}")
+	  UserModel selectUserById(Long id);
+	  
+	//  @Select("insert into func_user(name,sex) values(#{name}, #{sex})")
+	  int insertUser(UserModel userModel);
+	  
+	  void deleteUserById(Long id);
+		
+	  void updateUserById(Long id);
+	   
+	}

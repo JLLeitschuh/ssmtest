@@ -13,7 +13,7 @@
     </settings>  
     <!-- 为org.bb.ssm.mode.UserInfo 设置一个别名 UserInfo -->  
     <typeAliases>  
-        <typeAlias type="com.cjl.model.User" alias="User"/>  
+        <typeAlias type="com.cjl.model.UserModel" alias="User"/>  
     </typeAliases>  
     <mappers>  
        <package name="com.cjl.mapper"/>

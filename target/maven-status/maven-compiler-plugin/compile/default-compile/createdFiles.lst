@@ -1,2 +1,5 @@
-com\cjl\model\User.class
+com\cjl\service\UserService.class
 com\cjl\mapper\UserMapper.class
+com\cjl\controller\UserController.class
+com\cjl\service\impl\UserServiceImpl.class
+com\cjl\model\UserModel.class
