@@ -32,7 +32,7 @@
   
     <!-- 3. Mybatis自动扫描加载Sql映射文件/接口：MapperScannerConfigurer sqlSessionFactory   
         basePackage:指定sql映射文件/接口所在的包（自动扫描） -->  
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
+    <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">  
         <property name="basePackage" value="com.cjl.mapper"></property>  
         <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>  
     </bean>  

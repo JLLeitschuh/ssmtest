@@ -26,8 +26,9 @@ public class UserServiceImpl implements UserService{
 	 * @see cn.com.wmc.service.UserService#insert()
 	 */
 	@Override
-	public void insertUser(UserModel userModel) {
-	  userMapper.insertUser(userModel);
+	public void insertUser(UserModel funcuser) {
+	/*  userMapper.insertUser(userModel);*/
+	  userMapper.insert(funcuser);
 	}
 	
 	@Override

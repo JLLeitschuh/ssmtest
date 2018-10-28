@@ -2,7 +2,9 @@ package com.cjl.mapper;
 
 import com.cjl.model.UserModel;
 
-public interface UserMapper {
+import tk.mybatis.mapper.common.Mapper;
+
+public interface UserMapper extends Mapper<UserModel>{
 	
    //  @Select("SELECT * FROM func_user WHERE id = #{id}")
 	  UserModel selectUserById(Long id);

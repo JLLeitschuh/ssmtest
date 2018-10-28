@@ -19,7 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.cjl.UserForm;
+import com.cjl.form.UserForm;
 import com.cjl.model.UserModel;
 import com.cjl.service.UserService;
 
@@ -45,11 +45,11 @@ public class UserController {
 	 */
 	@RequestMapping(value="insert_user")
 	public String insertUser(UserForm userForm,Model model) {
-		UserModel userModel=new UserModel();
-		userModel.setUserName("FUHUIFANG");
-		userModel.setEntryDate(new Date());
-		userModel.setUserSex("nv");
-		userService.insertUser(userModel);
+		UserModel funcuser=new UserModel();
+		funcuser.setUserName("FUHUIFANG");
+		funcuser.setEntryDate(new Date());
+		funcuser.setUserSex("nv");
+		userService.insertUser(funcuser);
 		return "user/insert";
 	}
 	

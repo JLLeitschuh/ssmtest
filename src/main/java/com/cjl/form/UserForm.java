@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.cjl;
+package com.cjl.form;
 
 /**
  @author： fu    @time：2018年10月28日 下午3:10:00 
