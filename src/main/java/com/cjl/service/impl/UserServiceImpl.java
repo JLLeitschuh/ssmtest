@@ -54,4 +54,14 @@ public class UserServiceImpl implements UserService{
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see com.cjl.service.UserService#selectUserByUserNameAndEntryDate(java.lang.String, java.util.Date)
+	 */
+	@Override
+	public UserModel selectUserByUserNameAndEntryDate(String userName) {
+		
+		return userMapper.selectUserByUserNameAndEntryDate(userName);
+		
+	}
+
 }

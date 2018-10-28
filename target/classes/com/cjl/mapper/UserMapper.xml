@@ -16,7 +16,15 @@
 	</select>
 
 	<insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
-		insert into func_user(user_name,user_sex,entry_date) values(#{userName},#{userSex},#{entryDate,jdbcType=TIMESTAMP})
+		insert into func_user(
+		user_name,user_sex,
+		<if test="entryDate!=null and entryDate!=''">
+		entry_date
+		</if>) 
+		values(#{userName},#{userSex},
+		<if test="entryDate!=null and entryDate!=''">
+		#{entryDate,jdbcType=TIMESTAMP})
+		</if>
 	</insert>
 	
 	<delete id="deleteUserById">
@@ -25,9 +33,26 @@
 
 	<update id="updateUserById">
 		update func_user 
-		 set user_name=#{userName},	
+		 set
+		 <if test="userName!=null and userName!=''">
+		  user_name=#{userName},	
+		 </if>
+		 <if test="userSex!=null and userSex!=''">
 		 user_sex=#{userSex},
+		 </if>
+		 <if test="entryDate!=null and entryDate!=''">
 		 entry_date=#{entryDate,jdbcType=TIMESTAMP}
+		 </if>
+		 id=#{id}
 		where id=#{id}
 	</update>
+	
+	<select id="selectUserByUserNameAndEntryDate" resultType="com.cjl.model.UserModel">
+		select id,
+			user_name userName,
+			user_sex userSex,
+			entry_date entryDate
+		from func_user 
+		where user_name like concat('%',#{userName},'%')
+	</select>
 	</mapper>

@@ -4,13 +4,16 @@
 package com.cjl.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.cjl.form.MsgResponse;
 import com.cjl.form.ProductForm;
 import com.cjl.model.ProductModel;
 import com.cjl.service.ProductService;
@@ -67,13 +70,26 @@ public class ProductController {
 		ProductModel productModel=new ProductModel();
 		productModel.setId(2l);
 		productModel.setProductName("product1");
-		productModel.setProductPrice(10);
-		productModel.setProductTime(new Date());
+		productModel.setProductPrice(155);
+		/*productModel.setProductTime(new Date());*/
 		productService.updateProductById(productModel);
 		return "product/update";
-		
 	}
 	
-	
+	// 关键字查询
+	@GetMapping("/selectByKeyWords") 
+	public MsgResponse selectKeyWords(String keywords){
+		
+			try {
+				List<ProductModel> list = productService.queryByKeyWords(keywords);
+				for (ProductModel productModel : list) {
+					System.out.println(productModel);
+				}
+				return MsgResponse.success("成功", list);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return MsgResponse.error(e.getMessage());
+			}
+		}
 	
 }

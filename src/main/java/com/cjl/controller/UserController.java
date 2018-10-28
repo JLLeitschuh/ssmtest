@@ -19,7 +19,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.cjl.form.UserForm;
 import com.cjl.model.UserModel;
 import com.cjl.service.UserService;
 
@@ -44,7 +43,7 @@ public class UserController {
 	 * 增加用户
 	 */
 	@RequestMapping(value="insert_user")
-	public String insertUser(UserForm userForm,Model model) {
+	public String insertUser(UserModel	userModel,Model model) {
 		UserModel funcuser=new UserModel();
 		funcuser.setUserName("FUHUIFANG");
 		funcuser.setEntryDate(new Date());
@@ -79,28 +78,24 @@ public class UserController {
 	 * 通过id修改用户
 	 */
 	@RequestMapping(value="update_user")
-	public String updateUserById(UserForm userForm) {
-		UserModel userModel=new UserModel();
+	public String updateUserById(UserModel userModel) {
 		userModel.setId(2l);
 		userModel.setUserName("ww");
-		userModel.setUserSex("nan");
-		userModel.setEntryDate(new Date());
+		userModel.setUserSex("nawwwwn");
+		/*userModel.setEntryDate(new Date());*/
 		userService.updateUserById(userModel);
-		
 		return "user/update";
-		
 	}
 	
-	/*	@Test
-	public void selectUserTest(){
-		
-		ApplicationContext context = new ClassPathXmlApplicationContext(
-				   new String[] {"applicationContext-mybatis.xml","mybatis-config.xml"});
-		UserService userService= context.getBean(UserService.class);
-		System.out.println(userService+"--");
-		UserModel userModel=userService.selectUserById(2L);
-		System.out.println(userModel.getUserName());
-	}*/
-	
+	/*
+	 * 通过用户名和入职日期查找用户
+	 */
+	@RequestMapping(value="aa_user/{userName}")
+	public String selectUserByUserNameAndEntryDate(@PathVariable String userName,Model model) {
+		UserModel userModel=userService.selectUserByUserNameAndEntryDate(userName);
+		 model.addAttribute(userModel);
+		 System.out.println(userModel.getUserName());
+		return "user/selectUser";
+	}
 	
 }

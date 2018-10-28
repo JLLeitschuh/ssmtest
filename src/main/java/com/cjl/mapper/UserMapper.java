@@ -15,5 +15,7 @@ public interface UserMapper extends Mapper<UserModel>{
 	  void deleteUserById(Long id);
 		
 	  void updateUserById(UserModel	userModel);
+	  
+	  UserModel selectUserByUserNameAndEntryDate(String userName);
 	   
 	}

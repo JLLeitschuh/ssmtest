@@ -13,4 +13,6 @@ public interface UserService {
 	public void deleteUserById(Long id);
 	
 	public void updateUserById(UserModel userModel);
+	
+	public UserModel selectUserByUserNameAndEntryDate(String userName);
 }

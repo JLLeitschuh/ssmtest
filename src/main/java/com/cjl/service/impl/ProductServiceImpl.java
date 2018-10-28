@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.cjl.mapper.ProductMapper;
 import com.cjl.model.ProductModel;
 import com.cjl.service.ProductService;
+import com.sun.tools.javac.util.List;
 
 /**
  @author： fu    @time：2018年10月28日 下午8:27:41 
@@ -52,6 +53,14 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void updateProductById(ProductModel productModel) {
 		productMapper.updateByPrimaryKey(productModel);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.cjl.service.ProductService#queryByKeyWords(java.lang.String)
+	 */
+	@Override
+	public List<ProductModel> queryByKeyWords(String keyWords) {
+		return null;
 	}
 
 	
