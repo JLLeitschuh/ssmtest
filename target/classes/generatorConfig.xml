@@ -26,7 +26,7 @@
         </javaTypeResolver>    
           
         <!-- 生成实体类的地址 -->  
-        <javaModelGenerator targetPackage="com.cjl.model"  
+        <javaModelGenerator targetPackage="com.cjl.model.vo"  
             targetProject="D:\SoftWarefu\workspace\ssmtest\src\main\java" />  
               
         <!-- 生成mapper.xml文件 -->  
@@ -34,7 +34,7 @@
             targetProject="D:\SoftWarefu\workspace\ssmtest\src\main\resources" />  
           
         <!-- 生成mapxml对应的client 也就是接口dao -->  
-        <javaClientGenerator targetPackage="com.cjl.mapper"  
+        <javaClientGenerator targetPackage="com.cjl.mapper.generator"  
             targetProject="D:\SoftWarefu\workspace\ssmtest\src\main\java" type="XMLMAPPER" />  
               
         <table schema="test" tableName="t_user"  domainObjectName="User" enableCountByExample="false"    
