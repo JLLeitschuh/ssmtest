@@ -40,8 +40,8 @@ public class UserServiceImpl implements UserService{
 	 * @see com.cjl.service.UserService#updateUserById(java.lang.Long)
 	 */
 	@Override
-	public void updateUserById(Long id) {
-		userMapper.updateUserById(id);
+	public void updateUserById(UserModel userModel) {
+		userMapper.updateUserById(userModel);
 	}
 
 	/* (non-Javadoc)

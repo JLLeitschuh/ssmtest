@@ -11,12 +11,15 @@
 
 package com.cjl.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.cjl.UserForm;
 import com.cjl.model.UserModel;
 import com.cjl.service.UserService;
 
@@ -41,8 +44,13 @@ public class UserController {
 	 * 增加用户
 	 */
 	@RequestMapping(value="insert_user")
-	public void insertUser(UserModel userModel) {
+	public String insertUser(UserForm userForm,Model model) {
+		UserModel userModel=new UserModel();
+		userModel.setUserName("FUHUIFANG");
+		userModel.setEntryDate(new Date());
+		userModel.setUserSex("nv");
 		userService.insertUser(userModel);
+		return "user/insert";
 	}
 	
 	
@@ -58,7 +66,32 @@ public class UserController {
 		return "user/selectUser";
 	}
 	
-/*	@Test
+	/*
+	 * 删除用户
+	 */
+	@RequestMapping(value="delect_user/{id}")
+	public String deleteUserById(@PathVariable long id) {
+		userService.deleteUserById(id);
+		return "user/delete";
+	}
+	
+	/*
+	 * 通过id修改用户
+	 */
+	@RequestMapping(value="update_user")
+	public String updateUserById(UserForm userForm) {
+		UserModel userModel=new UserModel();
+		userModel.setId(2l);
+		userModel.setUserName("ww");
+		userModel.setUserSex("nan");
+		userModel.setEntryDate(new Date());
+		userService.updateUserById(userModel);
+		
+		return "user/update";
+		
+	}
+	
+	/*	@Test
 	public void selectUserTest(){
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext(
@@ -68,13 +101,6 @@ public class UserController {
 		UserModel userModel=userService.selectUserById(2L);
 		System.out.println(userModel.getUserName());
 	}*/
-	
-	
-	@RequestMapping(value="delect_user")
-	public void deleteUserById(long id) {
-		userService.deleteUserById(id);
-	}
-	
 	
 	
 }

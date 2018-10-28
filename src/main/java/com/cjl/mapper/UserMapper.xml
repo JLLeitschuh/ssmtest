@@ -16,7 +16,7 @@
 	</select>
 
 	<insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
-		insert into func_user(id,user_name,user_sex,entry_date)	values(#{id},#{userName},#{userSex},#{entryDate,jdbcType=TIMESTAMP})
+		insert into func_user(user_name,user_sex,entry_date) values(#{userName},#{userSex},#{entryDate,jdbcType=TIMESTAMP})
 	</insert>
 	
 	<delete id="deleteUserById">
@@ -25,10 +25,9 @@
 
 	<update id="updateUserById">
 		update func_user 
-		set user_name=#{userName}
-			user_Sex=#{userSex}
-			entry_date=#{entryDate,jdbcType=TIMESTAMP}
+		 set user_name=#{userName},	
+		 user_sex=#{userSex},
+		 entry_date=#{entryDate,jdbcType=TIMESTAMP}
 		where id=#{id}
-		}
 	</update>
 	</mapper>
