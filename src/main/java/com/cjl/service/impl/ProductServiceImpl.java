@@ -11,6 +11,9 @@ import com.cjl.model.ProductModel;
 import com.cjl.service.ProductService;
 import com.sun.tools.javac.util.List;
 
+import tk.mybatis.mapper.entity.Example;
+import tk.mybatis.mapper.entity.Example.Criteria;
+
 /**
  @author： fu    @time：2018年10月28日 下午8:27:41 
  @说明： 一份耕耘，一份收获
@@ -60,7 +63,10 @@ public class ProductServiceImpl implements ProductService {
 	 */
 	@Override
 	public List<ProductModel> queryByKeyWords(String keyWords) {
-		return null;
+		Example example = new Example(ProductModel.class);
+		Criteria criteria = example.createCriteria();
+		criteria.andLike("productName","%"+keyWords+"%");
+		return (List<ProductModel>) productMapper.selectByExample(example);
 	}
 
 	

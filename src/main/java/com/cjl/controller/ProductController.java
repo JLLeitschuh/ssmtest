@@ -77,11 +77,11 @@ public class ProductController {
 	}
 	
 	// 关键字查询
-	@GetMapping("/selectByKeyWords") 
-	public MsgResponse selectKeyWords(String keywords){
+	@GetMapping("/selectByKeyWords/{keyWords}") 
+	public MsgResponse selectKeyWords(@PathVariable String keyWords){
 		
 			try {
-				List<ProductModel> list = productService.queryByKeyWords(keywords);
+				List<ProductModel> list = productService.queryByKeyWords(keyWords);
 				for (ProductModel productModel : list) {
 					System.out.println(productModel);
 				}
