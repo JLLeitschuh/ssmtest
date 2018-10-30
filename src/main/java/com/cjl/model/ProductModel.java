@@ -5,6 +5,7 @@ package com.cjl.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -24,16 +25,19 @@ public class ProductModel {
 	/*
 	 *产品名称 
 	 */
+	@Column(name="product_name")
 	private String productName;
 	
 	/*
 	 * 产品价格
 	 */
+	@Column(name="product_price")
 	private float productPrice;
 
 	/*
 	 * 产品进货时间
 	 */
+	@Column(name="product_time")
 	private Date productTime;
 	
 	

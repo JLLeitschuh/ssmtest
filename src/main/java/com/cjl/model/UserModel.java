@@ -3,12 +3,9 @@ package com.cjl.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Table;
-
 /*
  * 用户表
  */
-@Table(name="func_user")
 public class UserModel implements Serializable {
 	
 	private static final long serialVersionUID=1L;

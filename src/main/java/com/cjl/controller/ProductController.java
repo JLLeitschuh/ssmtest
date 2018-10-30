@@ -6,6 +6,8 @@ package com.cjl.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.cjl.form.MsgResponse;
 import com.cjl.form.ProductForm;
 import com.cjl.model.ProductModel;
 import com.cjl.service.ProductService;
@@ -50,7 +51,19 @@ public class ProductController {
 		ProductModel productModel=productService.selectProductById(id);
 		model.addAttribute("productModel",productModel);
 		System.out.println(productModel.getProductName());
-		return "product/selectProduct";
+		return "product/select";
+	}
+	
+	/*
+	 * 根据Id查询用户2,根据HttpServletRequest传值
+	 */
+	@RequestMapping(value="select_product2/{id}")
+	//@ResponseBody
+	public String selectProduct2(@PathVariable Long id,HttpServletRequest request){
+		ProductModel productModel=productService.selectProductById(id);
+		request.setAttribute("productModel",productModel);
+		System.out.println(productModel.getProductName());
+		return "product/select";
 	}
 	
 	/*
@@ -78,18 +91,13 @@ public class ProductController {
 	
 	// 关键字查询
 	@GetMapping("/selectByKeyWords/{keyWords}") 
-	public MsgResponse selectKeyWords(@PathVariable String keyWords){
+	public String selectKeyWords(@PathVariable String keyWords){
 		
-			try {
 				List<ProductModel> list = productService.queryByKeyWords(keyWords);
 				for (ProductModel productModel : list) {
 					System.out.println(productModel);
 				}
-				return MsgResponse.success("成功", list);
-			} catch (Exception e) {
-				e.printStackTrace();
-				return MsgResponse.error(e.getMessage());
-			}
+				return "product/success";
 		}
 	
 }

@@ -1,5 +1,12 @@
+com\cjl\form\ProductForm.class
+com\cjl\service\ProductService.class
+com\cjl\controller\ProductController.class
+com\cjl\mapper\ProductMapper.class
+com\cjl\form\MsgResponse.class
+com\cjl\service\impl\ProductServiceImpl.class
 com\cjl\service\UserService.class
+com\cjl\model\ProductModel.class
 com\cjl\mapper\UserMapper.class
 com\cjl\controller\UserController.class
-com\cjl\service\impl\UserServiceImpl.class
 com\cjl\model\UserModel.class
+com\cjl\service\impl\UserServiceImpl.class
