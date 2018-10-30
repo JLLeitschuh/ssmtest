@@ -33,7 +33,6 @@ import com.cjl.service.UserService;
  *
  */
 @Controller  
-/*@RequestMapping(value = "func/user")*/
 public class UserController {
 
 	@Autowired
@@ -44,13 +43,15 @@ public class UserController {
 	 */
 	@RequestMapping(value="insert_user")
 	public String insertUser(UserModel	userModel,Model model) {
-		UserModel funcuser=new UserModel();
-		funcuser.setUserName("FUHUIFANG");
-		funcuser.setEntryDate(new Date());
-		funcuser.setUserSex("nv");
-		userService.insertUser(funcuser);
+		UserModel userModel2=new UserModel();
+		userModel2.setUserName("FUHUIFANG");
+		userModel2.setEntryDate(new Date());
+		userModel2.setUserSex("nvddd");
+		userService.insertUser(userModel2);
 		return "user/insert";
 	}
+	
+	
 	
 	
 	/*

@@ -24,43 +24,28 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductMapper productMapper;
 
-	/* (non-Javadoc)
-	 * @see com.cjl.service.ProductService#insertProduct(com.cjl.model.ProductModel)
-	 */
 	@Override
 	public void insertProduct(ProductModel productModel) {
 		productMapper.insert(productModel);
 		
 	}
-
-	/* (non-Javadoc)
-	 * @see com.cjl.service.ProductService#selectProductById(java.lang.Long)
-	 */
+	
 	@Override
 	public ProductModel selectProductById(Long id) {
 		return productMapper.selectByPrimaryKey(id);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.cjl.service.ProductService#deleteProductById(java.lang.Long)
-	 */
 	@Override
 	public void deleteProductById(Long id) {
 		productMapper.deleteByPrimaryKey(id);
 		
 	}
 
-	/* (non-Javadoc)
-	 * @see com.cjl.service.ProductService#updateProductById(com.cjl.model.ProductModel)
-	 */
 	@Override
 	public void updateProductById(ProductModel productModel) {
 		productMapper.updateByPrimaryKey(productModel);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.cjl.service.ProductService#queryByKeyWords(java.lang.String)
-	 */
 	@Override
 	public List<ProductModel> queryByKeyWords(String keyWords) {
 		Example example = new Example(ProductModel.class);
@@ -68,6 +53,13 @@ public class ProductServiceImpl implements ProductService {
 		criteria.andLike("productName","%"+keyWords+"%");
 		return (List<ProductModel>) productMapper.selectByExample(example);
 	}
+
+	@Override
+	public java.util.List<ProductModel> findAll() {
+		return productMapper.selectAll();
+	}
+
+
 
 	
 }

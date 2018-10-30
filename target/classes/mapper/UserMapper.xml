@@ -8,7 +8,7 @@
 		<id column="id" property="id" jdbcType="BIGINT"></id>
 		<result column="user_name" property="userName" jdbcType="VARCHAR" />
 		<result column="user_sex" property="userSex" jdbcType="VARCHAR" />
-		<result column="entry_date" property="entryDate" jdbcType="TIMESTAMP" />
+		<result column="entry_date" property="entryDate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
 	</resultMap> 
 
 	<select id="selectUserById" parameterType="Long" resultMap="userMap">
@@ -18,11 +18,9 @@
 	<insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
 		insert into func_user(
 		user_name,user_sex,
-		<if test="entryDate!=null and entryDate!=''">
-		entry_date
-		</if>) 
+		entry_date) 
 		values(#{userName},#{userSex},
-		<if test="entryDate!=null and entryDate!=''">
+		<if test="entryDate !=null and entryDate!=''">
 		#{entryDate,jdbcType=TIMESTAMP})
 		</if>
 	</insert>

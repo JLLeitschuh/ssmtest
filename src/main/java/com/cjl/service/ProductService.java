@@ -21,4 +21,9 @@ public interface ProductService {
 	public void updateProductById(ProductModel productModel);
 	
 	public List<ProductModel> queryByKeyWords(String keyWords);
+
+	/**
+	 * @说明：
+	 */
+	public java.util.List<ProductModel> findAll();
 }

@@ -29,13 +29,28 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
+	
+	/*
+	 * 跳转用户列表界面
+	 */
+	@RequestMapping(value="to_user_list")
+	public String toProductList(HttpServletRequest request){
+		List<ProductModel> list=productService.findAll();
+		for (ProductModel productModel : list) {
+			System.out.println(productModel);
+		}
+		request.setAttribute("list", list);
+		return "product/product_list";
+	}
+	
+	
 	/*
 	 * 增加用户
 	 */
 	@RequestMapping(value="insert_product")
 	public String insertProduct(ProductForm productForm,Model model) {
 		ProductModel productModel=new ProductModel();
-		productModel.setProductName("product3");
+		productModel.setProductName("product34");
 		productModel.setProductPrice(12);
 		productModel.setProductTime(new Date());
 		productService.insertProduct(productModel);
