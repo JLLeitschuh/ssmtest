@@ -52,17 +52,11 @@ $(document).ready(function(){
 		$("#productForm").submit();
 	});
 	
-	$("#corpId option").each(function() {
-		if ($(this).val() == '${vo.corpId}') {
+	$("#companyId option").each(function() {
+		if ($(this).val() == '${vo.companyId}') {
 		$(this).attr("selected", "selected");
 		}
 	});  
-	
-	$("#roleId option").each(function() {
-		if ($(this).val() == '${vo.roleId}') {
-		$(this).attr("selected", "selected");
-		}
-	}); 
 });
 
 
@@ -71,11 +65,11 @@ $(document).ready(function(){
 
 
 function _toAddUser(){
-	location.href = "${ctx }/product/to_add_user";
+	location.href = "${ctx }/product/to_add_product";
 }
 
-function _toUpdateUser(userId){
-	location.href = "${ctx }/product/to_update_user?userId="+userId
+function _toUpdateUser(productId){
+	location.href = "${ctx }/product/to_update_product?productId="+productId
 }
 </script>
 
@@ -115,8 +109,9 @@ label {
 										<div class="col-lg-2">
 											<select class="form-control" name="companyId" id="companyId">
 												<option value="">--请选择--</option>
+												<%-- <option <c:if test="${1 == item.id }">selected="selected"</c:if> value="1">公司总部</option> --%>
 												<c:forEach items="${companyList }" var="company">
-													<option value="${company.id }">${company.companyName }</option>
+													<option <c:if test="${vo.companyId == company.id }">selected="selected"</c:if> value="${company.id }">${company.companyName}</option>
 												</c:forEach>
 											</select>
 										</div>
@@ -174,7 +169,6 @@ label {
 												<tr>
 													<th class="center">序号</th>
 													<th class="center">产品名称</th>
-													<th class="center">公司名称</th>
 													<th class="center">产品价格</th>
 													<th class="center">生产时间</th>
 												</tr>
@@ -184,7 +178,6 @@ label {
 													<tr>
 														<td align="center">${index.index+1 }</td>
 														<td>${product.productName }</td>
-														<td>${product.companyId }</td>
 														<td>${product.productPrice }</td>
 														<td>${product.productTime }</td>
 														<td align="center">

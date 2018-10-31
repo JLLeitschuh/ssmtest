@@ -45,6 +45,7 @@ public class ProductController{
 		
 		List<CompanyModel> companyList = companyService.findAll();
 		PageInfo<ProductModel> pageInfo = productService.findPageInfo(vo);
+		request.setAttribute("vo", vo);
 		request.setAttribute("companyList", companyList);
 		request.setAttribute("pageInfo", pageInfo);
 		return "product/product_list2";

@@ -25,7 +25,6 @@
 			<if test="productName != null and productName != ''">
 				AND a.product_name like concat('%',#{productName},'%')
 			</if>
-			group by a.id
 		</where> 
 	</select>
 	
