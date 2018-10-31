@@ -3,13 +3,17 @@
  */
 package com.cjl.product.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cjl.product.mapper.ProductMapper;
 import com.cjl.product.model.ProductModel;
 import com.cjl.product.service.ProductService;
-import com.sun.tools.javac.util.List;
+import com.cjl.product.vo.ProductVO;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 import tk.mybatis.mapper.entity.Example;
 import tk.mybatis.mapper.entity.Example.Criteria;
@@ -51,12 +55,20 @@ public class ProductServiceImpl implements ProductService {
 		Example example = new Example(ProductModel.class);
 		Criteria criteria = example.createCriteria();
 		criteria.andLike("productName","%"+keyWords+"%");
-		return (List<ProductModel>) productMapper.selectByExample(example);
+		return productMapper.selectByExample(example);
 	}
 
 	@Override
 	public java.util.List<ProductModel> findAll() {
 		return productMapper.selectAll();
+	}
+
+	@Override
+	public PageInfo<ProductModel> findPageInfo(ProductVO productVO) {
+		
+		PageHelper.startPage(productVO.getPageNum(), productVO.getPageSize());
+		List<ProductModel> productList = productMapper.findProductList(productVO);
+		return new PageInfo<>(productList);
 	}
 
 

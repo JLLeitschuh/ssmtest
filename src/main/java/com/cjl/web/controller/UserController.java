@@ -34,6 +34,7 @@ import com.cjl.user.service.UserService;
  *
  */
 @Controller  
+@RequestMapping("/user")
 public class UserController {
 
 	@Autowired

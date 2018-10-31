@@ -12,8 +12,21 @@
 		<result column="product_time" property="productTime" jdbcType="DATE" javaType="java.util.Date" />
 	</resultMap> 
 
-	<select id="selectProductList" parameterType="Long" resultMap="productMap">
+	<select id="findProductList"  resultMap="productMap" parameterType="com.cjl.product.vo.ProductVO">
+		SELECT 
+			*,
+			(select b.company_name from func_company b where a.company_id = b.id) as company_name
+		FROM 
+			func_product a
+		<where>
+			<if test="companyId != null and companyId != ''">
+				AND a.company_id = #{companyId}
+			</if>
+			<if test="productName != null and productName != ''">
+				AND a.product_name like concat('%',#{productName},'%')
+			</if>
+			group by a.id
+		</where> 
 	</select>
-
 	
 	</mapper>

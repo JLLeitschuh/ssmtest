@@ -15,8 +15,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.cjl.company.model.CompanyModel;
+import com.cjl.company.service.CompanyService;
 import com.cjl.product.model.ProductModel;
 import com.cjl.product.service.ProductService;
+import com.cjl.product.vo.ProductVO;
+import com.github.pagehelper.PageInfo;
 
 
 
@@ -26,42 +30,29 @@ import com.cjl.product.service.ProductService;
 **/
 @Controller
 @RequestMapping(value="/product")
-public class ProductController {
+public class ProductController{
 
 	@Autowired
 	private ProductService productService;
 	 
-	
+	@Autowired
+	private CompanyService companyService;
 	/*
 	 * 跳转用户列表界面
 	 */
-	@RequestMapping(value="to_user_list")
-	public String toProductList(HttpServletRequest request){
+	@RequestMapping("to_product_list")
+	public String toProductList(ProductVO vo,HttpServletRequest request){
 		
+		List<CompanyModel> companyList = companyService.findAll();
+		PageInfo<ProductModel> pageInfo = productService.findPageInfo(vo);
+		request.setAttribute("companyList", companyList);
+		request.setAttribute("pageInfo", pageInfo);
+		return "product/product_list2";
+		/*return "success";*/
 		
-		List<ProductModel> list=productService.findAll();
-		for (ProductModel productModel : list) {
-			System.out.println(productModel);
-		}
-		request.setAttribute("list", list);
-		return "product/product_list";
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//下面是之前的代码====================================================
+	//下面是之前的代码===============================================================
 	
 	
 	/*

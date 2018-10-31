@@ -4,7 +4,10 @@
 package com.cjl.product.mapper;
 
 
+import java.util.List;
+
 import com.cjl.product.model.ProductModel;
+import com.cjl.product.vo.ProductVO;
 
 import tk.mybatis.mapper.common.Mapper;
 
@@ -13,6 +16,13 @@ import tk.mybatis.mapper.common.Mapper;
  @说明： 一份耕耘，一份收获
 **/
 public interface ProductMapper extends Mapper<ProductModel> {
+
+
+	/**
+	 * @param productVO 
+	 * @说明：
+	 */
+	List<ProductModel> findProductList(ProductVO productVO);
 
 	
 }
