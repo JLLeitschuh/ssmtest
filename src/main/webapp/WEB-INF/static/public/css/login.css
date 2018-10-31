@@ -1,0 +1,69 @@
+/* CSS Document */
+
+html, body, form {
+	height: 100%;
+	overflow: hidden;
+}
+a {
+	text-decoration: none;
+}
+.img_bg {
+	float: left;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+}
+.container {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+}
+.login {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+.login_inner {
+	width: 960px;
+	height: 284px;
+	margin: 10% auto 0px auto;
+	background:url(../images/login.png) left top no-repeat;
+	position: relative;
+}
+.login_input {
+	position: absolute;
+	right: 61px;
+	top: 11px;
+	width: 207px;
+}
+.login_inputblank1 {
+	width: 100%;
+	height: 80px;
+}
+.login_inputblank2 {
+	width: 100%;
+	height: 32px;
+}
+.login_inputblank3 {
+	width: 100%;
+	height: 18px;
+}
+.login_inputblank4 {
+	width: 100%;
+	height: 32px;
+}
+.login_inputblank5 {
+	width: 100%;
+	height: 36px;
+}
+.login_input1 {
+	width: 100%;
+	height: 32px;
+	line-height: 32px;
+	background: none;
+	border: 0px;
+	text-indent: 40px;
+}

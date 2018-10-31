@@ -1,5 +1,0 @@
-0:0:0:0:0:0:0:1 - - [30/Oct/2018:18:30:51 +0800] "GET /to_user_list HTTP/1.1" 500 5410 http-bio-8080-exec-1 780
-0:0:0:0:0:0:0:1 - - [30/Oct/2018:18:31:13 +0800] "GET /to_user_list HTTP/1.1" 200 997 http-bio-8080-exec-3 79
-0:0:0:0:0:0:0:1 - - [30/Oct/2018:18:39:50 +0800] "GET /to_user_list HTTP/1.1" 200 1941 http-bio-8080-exec-6 126
-0:0:0:0:0:0:0:1 - - [30/Oct/2018:18:39:51 +0800] "GET /to_user_list HTTP/1.1" 200 1941 http-bio-8080-exec-8 20
-0:0:0:0:0:0:0:1 - - [30/Oct/2018:18:43:32 +0800] "GET /to_user_list HTTP/1.1" 200 1246 http-bio-8080-exec-10 72

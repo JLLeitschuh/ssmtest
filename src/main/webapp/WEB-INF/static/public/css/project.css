@@ -1,0 +1,153 @@
+/* CSS Document */
+/*申报页面样式*/
+.reject_section_body {
+	width: 96%;
+	margin: 0px auto;
+}
+.reject_section_body td {
+	line-height: 45px;
+}
+.reject_section_body td a {
+	color: #333;
+	text-decoration: none;
+}
+/*css for Scheduling*/
+.list_body {
+	max-width: 1000px;
+	height: inherit;
+	clear: both;
+	overflow: hidden;
+	margin: 0px auto;
+}
+.list_title {
+	width: 100%;
+	height: 45px;
+	border-bottom: 1px solid #ff9900;
+}
+.list_title_font {
+	font-size: 20px;
+	color: #ff9900;
+	text-indent: 20px;
+}
+.list_title_form {
+	font-size: 14px;
+	color: #333;
+}
+.listblank {
+	width: 100%;
+	height: 1px;
+	line-height: 1px;
+	font-size: 1px;
+	border-bottom: 1px solid #ff9900;
+}
+.listblank2 {
+	width: 100%;
+	height: 2px;
+	line-height: 2px;
+	font-size: 2px;
+	background: #FFF;
+}
+.list_info {
+	width: 90%;
+	margin: 0px auto;
+	font-size: 12px;
+	height: 80px;
+	line-height: 40px;
+	color: #666;
+	font-weight: 100;
+}
+.border_list {
+	border: 1px solid #fff;
+}
+.list_section_title {
+	width: 98%;
+	margin: 0px auto;
+	background: url(../images/biaodian01_r4_c3.png) left top no-repeat #ececec;
+	font-size: 16px;
+	color: #fff;
+	font-weight: 600;
+	text-indent: 20px;
+}
+.list_section_title td {
+	height: 48px;
+	line-height: 48px;
+}
+.list_section_body {
+	width: 96%;
+	margin: 0px auto;
+}
+.list_section_body td {
+	line-height: 65px;
+	font-size: 14px;
+	color: #333;
+}
+.list_section_body td a {
+	color: #333;
+	text-decoration: none;
+}
+/* 圆角 powered by xsy */
+.radius1 {
+	border-radius: 5px;
+}
+/* 阴影 powered by xsy */
+.shadow1 {
+	-webkit-box-shadow: 0 0 5px rgba(153, 153, 153, .5);
+	-moz-box-shadow: 0 0 5px rgba(153, 153, 153, .5);
+	box-shadow: 0 0 5px rgba(153, 153, 153, .5);
+}
+/* 底色 powered by xsy */
+.grey_bg {
+	background: #f7f7f7;
+}
+.grey_bg2 {
+	background: #eee;
+}
+.table1 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.table1 td {
+	border-bottom: 0px;
+	color: #333;
+}
+.table2 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.table2 th {
+	background: #E2C9A3;
+	color: #fff;
+}
+.table2 td {
+	border-bottom: 0px;
+	background: #f1f1f1;
+	height: 43px;
+}
+/*申报部分样式1*/
+.detile_box {
+	width: 100%;
+	height: 160px;
+	line-height: 30px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	margin: 10px auto;
+}
+.project_box0 {
+	max-width: 1000px;
+	margin: 0px auto;
+}
+.blank td {
+	border-bottom: 1px solid #ccc;
+}
+.blank th {
+	background: #ccc;
+}
+.blank span {
+	margin-left: 10px;
+	margin-right: 10px;
+	font-size:14px;
+}
+.blank label{ font-size:14px;}
+.blank p{ font-size:14px;}
+
+.back-button{ display:block; width:60px ; height: 60px ; line-height:60px ; position:fixed; right:35px ; top:40% ; background: #F90; border:1px solid #f5f5f5; border-radius: 5px ; text-align:center; color: #333; }
