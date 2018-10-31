@@ -34,4 +34,9 @@ public interface ProductService {
 	 * @说明：
 	 */
 	public PageInfo<ProductModel> findPageInfo(ProductVO productVO);
+
+	/**
+	 * @说明：
+	 */
+	public ProductModel findProductById(Long productId);
 }

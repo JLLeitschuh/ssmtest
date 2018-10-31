@@ -49,9 +49,55 @@ public class ProductController{
 		request.setAttribute("companyList", companyList);
 		request.setAttribute("pageInfo", pageInfo);
 		return "product/product_list2";
-		/*return "success";*/
+	}
+	
+	
+	/*
+	 * 跳转添加产品页面
+	 */
+	public String toAddProduct(){
+		List<ProductModel> productList=productService.findAll();
+		
+		return "product/addProduct";
 		
 	}
+	
+	
+	
+	
+	
+	/*
+	 * 跳转编辑页面
+	 */
+	@RequestMapping("to_update_product")
+	public String toUpdateUser(HttpServletRequest request, Long productId) {
+		
+		//编辑页面需要ProductModel的所有属性
+		ProductModel model = productService.findProductById(productId);
+		/*List<CorpModel> corpList = corpService.selectList();
+		List<RoleModel> roleList = roleService.findUserRoleNot(userId);
+		List<UserRoleModel> userRole = userRoleService.findUserRole(userId);
+		*/
+		/*request.setAttribute("model", model);
+		request.setAttribute("corpList", corpList);
+		request.setAttribute("roleList", roleList);
+		request.setAttribute("userRole", userRole);*/
+		
+		return "func/user/update_user";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	//下面是之前的代码===============================================================
 	

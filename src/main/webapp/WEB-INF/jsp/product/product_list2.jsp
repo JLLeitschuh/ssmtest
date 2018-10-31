@@ -64,11 +64,11 @@ $(document).ready(function(){
 
 
 
-function _toAddUser(){
+function _toAddProduct(){
 	location.href = "${ctx }/product/to_add_product";
 }
 
-function _toUpdateUser(productId){
+function _toUpdateProduct(productId){
 	location.href = "${ctx }/product/to_update_product?productId="+productId
 }
 </script>
@@ -153,7 +153,7 @@ label {
 						<div class="panel-heading">
 							<div class="pull-left list_name">产品管理</div>
 							<div class="pull-right">
-								<a href="javascript:;" onclick="_toAddUser();" class="btn btn-success btn-xs">
+								<a href="javascript:;" onclick="_toAddProduct();" class="btn btn-success btn-xs">
 									<i class="icon iconfont" style="font-family: 'Arial Black', Gadget, sans-serif; font-size: 14px">&#xe612;</i>
 									新增
 								</a>
@@ -171,6 +171,7 @@ label {
 													<th class="center">产品名称</th>
 													<th class="center">产品价格</th>
 													<th class="center">生产时间</th>
+													<th class="center">操作</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -181,7 +182,7 @@ label {
 														<td>${product.productPrice }</td>
 														<td>${product.productTime }</td>
 														<td align="center">
-															<a href="javascript:;" onclick="_toUpdateUser('${product.id}');" class="link2 cu" title="编辑">
+															<a href="javascript:;" onclick="_toUpdateProduct('${product.id}');" class="link2 cu" title="编辑">
 																编辑
 															</a>
 															&nbsp;

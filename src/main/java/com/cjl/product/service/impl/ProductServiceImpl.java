@@ -71,6 +71,11 @@ public class ProductServiceImpl implements ProductService {
 		return new PageInfo<>(productList);
 	}
 
+	@Override
+	public ProductModel findProductById(Long productId) {
+		return productMapper.selectByPrimaryKey(productId);
+	}
+
 
 
 	
