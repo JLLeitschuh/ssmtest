@@ -6,6 +6,7 @@ package com.cjl.product.model;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -20,6 +21,8 @@ public class ProductModel {
 	 * 产品Id
 	 */
 	@Id
+	@GeneratedValue(generator = "JDBC")
+	@Column(name = "id")
 	private Long id;
 	
 	/*

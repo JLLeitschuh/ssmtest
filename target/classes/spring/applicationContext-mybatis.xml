@@ -26,6 +26,7 @@
         <property name="username" value="root"></property>  
         <property name="password" value="root"></property>  
     </bean>  
+   
   
     <!-- 2.Mybatis 的 SqlSession的工厂：SqlSessionFactoryBean dataSource引用数据源 Mybatis   
         定义数据源，同意加载配置 -->  

@@ -15,7 +15,7 @@ import com.github.pagehelper.PageInfo;
 **/
 public interface ProductService {
 
-	public void insertProduct(ProductModel productModel);
+	public void insertProduct2(ProductModel productModel);
 	
 	public ProductModel selectProductById(Long id);
 	
@@ -39,4 +39,9 @@ public interface ProductService {
 	 * @说明：
 	 */
 	public ProductModel findProductById(Long productId);
+
+	/**
+	 * @说明：
+	 */
+	public int insertProduct(ProductModel productModel);
 }

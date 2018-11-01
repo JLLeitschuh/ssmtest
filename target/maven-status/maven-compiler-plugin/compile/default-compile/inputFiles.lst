@@ -5,9 +5,12 @@ D:\SoftWarefu\workspace\ssmtest\src\main\java\com\cjl\product\vo\ProductVO.java
 D:\SoftWarefu\workspace\ssmtest\src\main\java\com\cjl\company\service\CompanyService.java
 D:\SoftWarefu\workspace\ssmtest\src\main\java\com\cjl\user\mapper\UserMapper.java
 D:\SoftWarefu\workspace\ssmtest\src\main\java\com\cjl\user\service\impl\UserServiceImpl.java
+D:\SoftWarefu\workspace\ssmtest\src\main\java\com\cjl\product\mapper\ProductCompanyMapper.java
 D:\SoftWarefu\workspace\ssmtest\src\main\java\com\cjl\product\mapper\ProductMapper.java
+D:\SoftWarefu\workspace\ssmtest\src\main\java\com\cjl\product\model\ProductCompanyModel.java
 D:\SoftWarefu\workspace\ssmtest\src\main\java\com\cjl\product\service\impl\ProductServiceImpl.java
 D:\SoftWarefu\workspace\ssmtest\src\main\java\com\cjl\web\controller\ProductController.java
+D:\SoftWarefu\workspace\ssmtest\src\main\java\base\util\JsonMsg.java
 D:\SoftWarefu\workspace\ssmtest\src\main\java\com\cjl\company\model\CompanyModel.java
 D:\SoftWarefu\workspace\ssmtest\src\main\java\com\cjl\web\controller\CompanyController.java
 D:\SoftWarefu\workspace\ssmtest\src\main\java\base\util\BaseVo.java

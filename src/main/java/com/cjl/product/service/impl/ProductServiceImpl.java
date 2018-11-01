@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cjl.product.mapper.ProductCompanyMapper;
 import com.cjl.product.mapper.ProductMapper;
 import com.cjl.product.model.ProductModel;
 import com.cjl.product.service.ProductService;
@@ -27,9 +28,12 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Autowired
 	private ProductMapper productMapper;
+	
+	@Autowired
+	private ProductCompanyMapper productCompanyMapper;
 
 	@Override
-	public void insertProduct(ProductModel productModel) {
+	public void insertProduct2(ProductModel productModel) {
 		productMapper.insert(productModel);
 		
 	}
@@ -74,6 +78,16 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public ProductModel findProductById(Long productId) {
 		return productMapper.selectByPrimaryKey(productId);
+	}
+
+	@Override
+	public int insertProduct(ProductModel productModel) {
+			try {
+			 		int flag=productMapper.insert(productModel);
+			 		return flag;
+			} catch (Exception e) {
+				return 0;
+			}
 	}
 
 

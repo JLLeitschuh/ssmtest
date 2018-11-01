@@ -180,7 +180,8 @@ label {
 														<td align="center">${index.index+1 }</td>
 														<td>${product.productName }</td>
 														<td>${product.productPrice }</td>
-														<td>${product.productTime }</td>
+														<td><fmt:formatDate value="${product.productTime}" pattern="yyyy-MM-dd"/></td>
+														<%-- <td>${product.productTime }</td> --%>
 														<td align="center">
 															<a href="javascript:;" onclick="_toUpdateProduct('${product.id}');" class="link2 cu" title="编辑">
 																编辑

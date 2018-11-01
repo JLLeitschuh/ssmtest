@@ -3,17 +3,20 @@
  */
 package com.cjl.web.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cjl.company.model.CompanyModel;
 import com.cjl.company.service.CompanyService;
@@ -21,6 +24,8 @@ import com.cjl.product.model.ProductModel;
 import com.cjl.product.service.ProductService;
 import com.cjl.product.vo.ProductVO;
 import com.github.pagehelper.PageInfo;
+
+import base.util.JsonMsg;
 
 
 
@@ -53,18 +58,36 @@ public class ProductController{
 	
 	
 	/*
-	 * 跳转添加产品页面
+	 * 跳转添加产品页面,需要company的下拉列表
 	 */
-	public String toAddProduct(){
-		List<ProductModel> productList=productService.findAll();
-		
-		return "product/addProduct";
-		
+	@RequestMapping("to_add_product")
+	public String toAddProduct(HttpServletRequest request){
+		List<CompanyModel> companyList=companyService.findAll();
+		request.setAttribute("companyList", companyList);
+		return "product/add_product";
 	}
 	
-	
-	
-	
+	/*
+	 * 添加产品,得到下拉列表的内容,和input text的内容 
+	 */
+	@RequestMapping("do_add_product")
+	@ResponseBody
+	public JsonMsg doAddProduct(ProductModel productModel) throws ParseException{
+		JsonMsg ret = new JsonMsg("添加产品失败!");
+		ret.setSuccess(true);
+		ret.setMsg("添加产品成功");
+		int number=productService.insertProduct(productModel);
+			
+			
+		if (number==1) {
+			ret.setSuccess(true);
+			ret.setMsg("添加产品成功");
+		}else{
+			ret.setSuccess(false);
+			ret.setMsg("添加产品失败");
+		}
+		return ret;
+	}
 	
 	/*
 	 * 跳转编辑页面
@@ -85,8 +108,13 @@ public class ProductController{
 		
 		return "func/user/update_user";
 	}
-	
-	
+
+	@InitBinder  
+	public void initBinder(WebDataBinder binder) {  
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
+	    dateFormat.setLenient(false);  
+	    binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));  
+	}
 	
 	
 	
@@ -105,7 +133,7 @@ public class ProductController{
 	/*
 	 * 增加用户
 	 */
-	@RequestMapping(value="insert_product")
+	/*@RequestMapping(value="insert_product")
 	public String insertProduct(ProductModel productModel,Model model) {
 		productModel.setProductName("product34");
 		productModel.setProductPrice(12);
@@ -114,9 +142,9 @@ public class ProductController{
 		return "product/insert";
 	}
 	
-	/*
+	
 	 * 根据Id查询用户
-	 */
+	 
 	@RequestMapping(value="select_product/{id}")
 	//@ResponseBody
 	public String selectProduct(@PathVariable Long id,Model model){
@@ -126,9 +154,9 @@ public class ProductController{
 		return "product/select";
 	}
 	
-	/*
+	
 	 * 根据Id查询用户2,根据HttpServletRequest传值
-	 */
+	 
 	@RequestMapping(value="select_product2/{id}")
 	//@ResponseBody
 	public String selectProduct2(@PathVariable Long id,HttpServletRequest request){
@@ -138,24 +166,24 @@ public class ProductController{
 		return "product/select";
 	}
 	
-	/*
+	
 	 * 删除用户
-	 */
+	 
 	@RequestMapping(value="delect_product/{id}")
 	public String deleteProductById(@PathVariable long id) {
 		productService.deleteProductById(id);
 		return "product/delete";
 	}
 	
-	/*
+	
 	 * 通过id修改用户
-	 */
+	 
 	@RequestMapping(value="update_product")
 	public String updateProductById(ProductModel productModel) {
 		productModel.setId(2l);
 		productModel.setProductName("product1");
 		productModel.setProductPrice(155);
-		/*productModel.setProductTime(new Date());*/
+		productModel.setProductTime(new Date());
 		productService.updateProductById(productModel);
 		return "product/update";
 	}
@@ -169,6 +197,6 @@ public class ProductController{
 					System.out.println(productModel);
 				}
 				return "product/success";
-		}
+		}*/
 	
 }
