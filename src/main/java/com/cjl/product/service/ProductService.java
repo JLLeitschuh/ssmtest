@@ -19,9 +19,9 @@ public interface ProductService {
 	
 	public ProductModel selectProductById(Long id);
 	
-	public void deleteProductById(Long id);
+	public int deleteProductById(Long id);
 	
-	public void updateProductById(ProductModel productModel);
+	public int updateProductById(ProductModel productModel);
 	
 	public List<ProductModel> queryByKeyWords(String keyWords);
 
@@ -44,4 +44,5 @@ public interface ProductService {
 	 * @说明：
 	 */
 	public int insertProduct(ProductModel productModel);
+
 }

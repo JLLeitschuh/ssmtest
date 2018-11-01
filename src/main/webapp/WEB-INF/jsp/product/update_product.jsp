@@ -18,6 +18,10 @@
 <link href="${ctx}/static/lib/tree-menu/tree.css" rel="stylesheet" type="text/css" />
 <!--jquery-->
 <script src="${ctx}/static/public/js/jquery-1.12.4.min.js" type="text/javascript"></script>
+<!--lay date JS-->
+<script src="${ctx }/static/lib/laydate/laydate.js" type="text/javascript"></script>
+<!--lay date-->
+<link href="${ctx }/static/lib/laydate/need/laydate.css" rel="stylesheet" type="text/css" />
 <!--layer JS-->
 <script src="${ctx }/static/lib/layer/layer.js" type="text/javascript"></script>
 
@@ -31,13 +35,17 @@ label {
 	border-radius: 0px;
 }
 </style>
-
-
 <script type="text/javascript">
+	$(function() {
+		$("#corp option").each(function() {
+			if ($(this).val() == '${model.companyId}') {
+				$(this).attr("selected", "selected");
+			}
+		});
+	})
 
-	function _doAddProduct() {
-		alert('xx')
-		var url = "${ctx}/product/do_add_product";
+	function doUpdateProduct() {
+		var url = "${ctx}/product/do_update_product";
 		var param = $("#productForm").serialize();
 		$.post(url, param, function(data) {
 			data = eval("(" + data + ")");
@@ -54,10 +62,10 @@ label {
 				});
 			}
 		});
-	}
-	 
 
-	function _toBack(){
+	}
+
+	function _toBock(){
 		location.href = "${ctx }/product/to_product_list";
 	}
 	
@@ -95,10 +103,14 @@ label {
 											<div class="row form-group">
 												<label class="col-lg-2 form_name"><span class="red">*</span>产品公司&nbsp;&nbsp;</label>
 												<div class="col-lg-4">
-													<select class="form-control" id="corp" name="companyId" >
+													<select class="form-control" id="companyId" name="companyId" >
 														<option value="">--请选择--</option>
 														<c:forEach items="${companyList }" var="company">
-															<option value="${company.id}">${company.companyName }</option>
+															<option 
+															<c:if test="${model.companyId==company.id }">selected="selected"</c:if>
+															value="${company.id }"
+															>${company.companyName }</option>
+														<%-- 	<option value="${company.id}">${company.companyName }</option> --%>
 														</c:forEach>
 													</select>
 												</div>
@@ -106,20 +118,20 @@ label {
 												<div class="space1"></div>
 												<label class="col-lg-2 form_name">产品名称&nbsp;&nbsp;</label>
 												<div class="col-lg-10">
-													<input type="text" class="form-control" id="parentIframe" name="productName" />
+													<input type="text" class="form-control" id="parentIframe" name="productName" value="${model.productName }" />
 												</div>
 												<div class="space1"></div>
 												<div class="space1"></div>
 												<label class="col-lg-2 form_name">产品价格&nbsp;&nbsp;</label>
 												<div class="col-lg-10">
 													<input type="text" class="form-control" id="parentIframe"
-														name="productPrice" />
+														name="productPrice"  value="${model.productPrice }"/>
 												</div>
 												<div class="space1"></div>
 												<div class="space1"></div>
 												<label class="col-lg-2 form_name">进货时间&nbsp;&nbsp;</label>
 												<div class="col-lg-10">
-													<input type="text" class="form-control" id="parentIframe" name="productTimeStr"  value="<%=(new java.util.Date()).toLocaleString()%>" />
+													<input type="text" class="form-control" id="parentIframe" name="productTimeStr" value="<fmt:formatDate value="${model.productTime}" pattern="yyyy-mm-dd HH:mm:ss"/>" />
 												</div>
 												<div class="clear"></div>
 											</div>
@@ -130,7 +142,7 @@ label {
 							</div>
 						</div>
 						<div class="panel-footer">
-							<a href="javascript:;" onclick="_doAddProduct()" class="btn btn-sm btn-primary pull-right publish" style="width: 100px; margin-left: 10px;">
+							<a href="javascript:;" onclick="doUpdateProduct()" class="btn btn-sm btn-primary pull-right publish" style="width: 100px; margin-left: 10px;">
 								<i class="icon iconfont" style="font-family: 'Arial Black', Gadget, sans-serif; font-size: 14px;">&#xe60a;</i>
 								&nbsp;&nbsp;保存
 							</a>

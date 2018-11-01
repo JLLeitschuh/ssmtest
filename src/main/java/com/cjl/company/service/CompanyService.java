@@ -18,4 +18,5 @@ public interface CompanyService {
 	 */
 	List<CompanyModel> findAll();
 
+
 }

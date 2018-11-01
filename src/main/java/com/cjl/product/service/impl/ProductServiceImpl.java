@@ -44,14 +44,14 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void deleteProductById(Long id) {
-		productMapper.deleteByPrimaryKey(id);
+	public int deleteProductById(Long id) {
+	return 	productMapper.deleteByPrimaryKey(id);
 		
 	}
 
 	@Override
-	public void updateProductById(ProductModel productModel) {
-		productMapper.updateByPrimaryKey(productModel);
+	public int updateProductById(ProductModel productModel) {
+		return productMapper.updateByPrimaryKeySelective(productModel);
 	}
 
 	@Override
@@ -89,6 +89,7 @@ public class ProductServiceImpl implements ProductService {
 				return 0;
 			}
 	}
+
 
 
 
