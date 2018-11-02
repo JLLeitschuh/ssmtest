@@ -59,11 +59,6 @@ $(document).ready(function(){
 	});  
 });
 
-
-
-
-
-
 function _toAddProduct(){
 	location.href = "${ctx }/product/to_add_product";
 }
@@ -92,17 +87,6 @@ function doUpdateProduct() {
 	});
 
 }
-
-
-
-
-/* 
-function _toDeleteProduct(productId){
-	alert("确定删除吗?")
-	location.href = "${ctx }/product/do_delete_product?productId="+productId
-} */
-
-
  function _toDeleteProduct(productId) {
 	var url = "${ctx}/product/do_delete_product";
 	var param = {
@@ -116,7 +100,6 @@ function _toDeleteProduct(productId){
 			}, function(index) {
 				layer.close(index);
 				window.location.href = "${ctx }/product/to_product_list";
-				//window.location.href = "${ctx }/product/to_product_list";
 			});
 		} else {
 			layer.alert(data.msg, {

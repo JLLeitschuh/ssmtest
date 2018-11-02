@@ -1,6 +1,7 @@
 com\cjl\product\service\impl\ProductServiceImpl.class
 com\cjl\product\vo\ProductVO.class
 com\cjl\product\mapper\ProductCompanyMapper.class
+base\util\DebugTest.class
 com\cjl\user\mapper\UserMapper.class
 com\cjl\user\service\impl\UserServiceImpl.class
 base\util\BaseVo.class
