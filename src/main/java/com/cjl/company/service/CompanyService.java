@@ -14,7 +14,7 @@ import com.cjl.company.model.CompanyModel;
 public interface CompanyService {
 
 	/**
-	 * @说明：
+	 * @说明：查询全部公司
 	 */
 	List<CompanyModel> findAll();
 

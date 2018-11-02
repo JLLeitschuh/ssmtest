@@ -44,7 +44,7 @@ label {
 		});
 	})
 
-	function doUpdateProduct() {
+/* 	function doUpdateProduct() {
 		var url = "${ctx}/product/do_update_product";
 		var param = $("#productForm").serialize();
 		$.post(url, param, function(data) {
@@ -63,7 +63,7 @@ label {
 			}
 		});
 
-	}
+	} */
 
 	function _toBack(){
 		location.href = "${ctx }/product/to_product_list";

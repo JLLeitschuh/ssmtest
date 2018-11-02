@@ -72,13 +72,7 @@ function _toUpdateProduct(productId){
 	location.href = "${ctx }/product/to_update_product?productId="+productId
 }
 
-function _toDeleteProduct(productId){
-	alert("确定删除吗?")
-	location.href = "${ctx }/product/do_delete_product?productId="+productId
-}
-
-
-/* function _toDeleteProduct(productId) {
+function doUpdateProduct() {
 	var url = "${ctx}/product/do_delete_product";
 	var param = $("#productForm").serialize();
 	$.post(url, param, function(data) {
@@ -88,7 +82,7 @@ function _toDeleteProduct(productId){
 				icon : 6, btn:['确定'], title:'信息'
 			}, function(index) {
 				layer.close(index);
-				window.location.href = "${ctx }/product/to_product_list"+productId;
+				window.location.href = "${ctx }/product/to_product_list";
 			});
 		} else {
 			layer.alert(data.msg, {
@@ -96,7 +90,41 @@ function _toDeleteProduct(productId){
 			});
 		}
 	});
+
+}
+
+
+
+
+/* 
+function _toDeleteProduct(productId){
+	alert("确定删除吗?")
+	location.href = "${ctx }/product/do_delete_product?productId="+productId
 } */
+
+
+ function _toDeleteProduct(productId) {
+	var url = "${ctx}/product/do_delete_product";
+	var param = {
+			"productId":productId
+	}
+	$.post(url, param, function(data) {
+		data = eval("(" + data + ")");
+		if (data.success) {
+			layer.alert(data.msg, {
+				icon : 6, btn:['确定'], title:'信息'
+			}, function(index) {
+				layer.close(index);
+				window.location.href = "${ctx }/product/to_product_list";
+				//window.location.href = "${ctx }/product/to_product_list";
+			});
+		} else {
+			layer.alert(data.msg, {
+				icon : 6, btn:['确定'], title:'信息'
+			});
+		}
+	});
+} 
 
 </script>
 

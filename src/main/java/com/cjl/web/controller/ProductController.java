@@ -51,7 +51,7 @@ public class ProductController {
 	}
 
 	/*
-	 * 跳转添加产品页面,需要company的下拉列表
+	 * 跳转添加产品页面
 	 */
 	@RequestMapping("to_add_product")
 	public String toAddProduct(HttpServletRequest request) {
@@ -61,22 +61,24 @@ public class ProductController {
 	}
 
 	/*
-	 * 添加产品,得到下拉列表的内容,和input text的内容
+	 * 添加产品
 	 */
 	@RequestMapping("do_add_product")
 	@ResponseBody
-	public JsonMsg doAddProduct(ProductModel productModel, String productTimeStr)
-			throws ParseException {
+	public JsonMsg doAddProduct(ProductModel productModel, String productTimeStr){
 		JsonMsg ret = new JsonMsg("添加产品失败!");
-
 		if (productTimeStr == null || productTimeStr.length() == 0) {
 			productModel.setProductTime(null);
 		} else {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
-			Date date = sdf.parse(productTimeStr);
-			productModel.setProductTime(date);
+			Date date;
+			try {
+				date = sdf.parse(productTimeStr);
+				productModel.setProductTime(date);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 		}
-
 		int number = productService.insertProduct(productModel);
 		if (number == 1) {
 			ret.setSuccess(true);
@@ -110,7 +112,6 @@ public class ProductController {
 	public JsonMsg doUpdateProduct(ProductModel productModel, String productTimeStr)
 			throws ParseException {
 		JsonMsg ret = new JsonMsg("修改产品成功");
-
 		if (productTimeStr == null || productTimeStr.length() == 0) {
 			productModel.setProductTime(null);
 		} else {
@@ -136,12 +137,25 @@ public class ProductController {
 		return ret;
 	}
 
+	/*
+	 * 根据Id删除产品
+	 */
 	@RequestMapping("do_delete_product")
-	public void toDeleteProduct(Long productId) {
-		System.out.println("2222222222222222222222222222222"+productId+"44444444444444444444444444444");
-		productService.deleteProductById(productId);
-			
+	@ResponseBody
+	public JsonMsg toDeleteProduct(Long productId) {
+		JsonMsg ret = new JsonMsg("删除成功");
+		System.out.println(productId);
+		int flag=productService.deleteProductById(productId);
+		if (flag>0) {
+			ret.setSuccess(true);
+			ret.setMsg("删除产品成功");
+		}else {
+			ret.setSuccess(false);
+			ret.setMsg("删除产品失败");
+		}
+		return ret;
 	}
+	
 
 	// 下面是之前的代码===============================================================
 
