@@ -65,7 +65,7 @@ label {
 
 	}
 
-	function _toBock(){
+	function _toBack(){
 		location.href = "${ctx }/product/to_product_list";
 	}
 	
@@ -118,6 +118,7 @@ label {
 												<div class="space1"></div>
 												<label class="col-lg-2 form_name">产品名称&nbsp;&nbsp;</label>
 												<div class="col-lg-10">
+													<input type="hidden" class="form-control" name="id" value="${model.id }" />
 													<input type="text" class="form-control" id="parentIframe" name="productName" value="${model.productName }" />
 												</div>
 												<div class="space1"></div>

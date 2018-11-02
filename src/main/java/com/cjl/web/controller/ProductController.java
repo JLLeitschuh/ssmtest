@@ -42,7 +42,6 @@ public class ProductController {
 	 */
 	@RequestMapping("to_product_list")
 	public String toProductList(ProductVO vo, HttpServletRequest request) {
-
 		List<CompanyModel> companyList = companyService.findAll();
 		PageInfo<ProductModel> pageInfo = productService.findPageInfo(vo);
 		request.setAttribute("vo", vo);
@@ -69,14 +68,16 @@ public class ProductController {
 	public JsonMsg doAddProduct(ProductModel productModel, String productTimeStr)
 			throws ParseException {
 		JsonMsg ret = new JsonMsg("添加产品失败!");
-		ret.setSuccess(true);
-		ret.setMsg("添加产品成功");
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
-		Date date = sdf.parse(productTimeStr);
-		productModel.setProductName(productTimeStr);
+
+		if (productTimeStr == null || productTimeStr.length() == 0) {
+			productModel.setProductTime(null);
+		} else {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+			Date date = sdf.parse(productTimeStr);
+			productModel.setProductTime(date);
+		}
 
 		int number = productService.insertProduct(productModel);
-
 		if (number == 1) {
 			ret.setSuccess(true);
 			ret.setMsg("添加产品成功");
@@ -92,7 +93,6 @@ public class ProductController {
 	 */
 	@RequestMapping("to_update_product")
 	public String toUpdateUser(HttpServletRequest request, Long productId) {
-
 		// 编辑页面需要ProductModel的所有属性
 		ProductModel productModel = productService.findProductById(productId);
 		List<CompanyModel> companyList = companyService.findAll();
@@ -104,48 +104,45 @@ public class ProductController {
 	/*
 	 * 编辑页面内容,修改操作
 	 */
-	
+
 	@RequestMapping("do_update_product")
 	@ResponseBody
-	public JsonMsg doUpdateProduct(ProductModel productModel,String productTimeStr) {
+	public JsonMsg doUpdateProduct(ProductModel productModel, String productTimeStr)
+			throws ParseException {
 		JsonMsg ret = new JsonMsg("修改产品成功");
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
-		try {
-			Date date = sdf.parse(productTimeStr);
-			productModel.setProductTime(date);
-			int flag = productService.updateProductById(productModel);
-			if (flag > 0) {
-				ret.setSuccess(true);
-				ret.setMsg("修改产品成功");
+
+		if (productTimeStr == null || productTimeStr.length() == 0) {
+			productModel.setProductTime(null);
+		} else {
+			try {
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+				Date date;
+				date = sdf.parse(productTimeStr);
+				productModel.setProductTime(date);
+			} catch (ParseException e) {
+				e.printStackTrace();
 			}
-		} catch (ParseException e1) {
+		}
+
+		int flag = productService.updateProductById(productModel);
+		if (flag > 0) {
+			ret.setSuccess(true);
+			ret.setMsg("修改产品成功");
+		} else {
 			ret.setSuccess(false);
 			ret.setMsg("修改产品失败");
-			e1.printStackTrace();
 		}
+
 		return ret;
 	}
 
 	@RequestMapping("do_delete_product")
-	@ResponseBody
-	public JsonMsg toDeleteProduct(Long productId){
-		JsonMsg ret=new JsonMsg("删除成功");
-		try {
-			int flag=productService.deleteProductById(productId);
-			if (flag>0) {
-				ret.setMsg("删除成功");
-				ret.setSuccess(true);
-			}
+	public void toDeleteProduct(Long productId) {
+		System.out.println("2222222222222222222222222222222"+productId+"44444444444444444444444444444");
+		productService.deleteProductById(productId);
 			
-		} catch (Exception e) {
-			System.out.println(e.getStackTrace());
-			ret.setMsg("删除失败");
-			ret.setSuccess(false);
-		}
-		return ret;
 	}
-	
+
 	// 下面是之前的代码===============================================================
 
 	/*

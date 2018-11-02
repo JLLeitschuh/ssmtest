@@ -51,7 +51,8 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public int updateProductById(ProductModel productModel) {
-		return productMapper.updateByPrimaryKeySelective(productModel);
+		return productMapper.updateByPrimaryKey(productModel);
+		
 	}
 
 	@Override

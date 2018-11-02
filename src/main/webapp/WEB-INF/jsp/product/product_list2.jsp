@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>人员管理</title>
+<title>产品管理</title>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!-- Css for boot -->
 <link href="${ctx }/static/public/css/boot.css" rel="stylesheet" type="text/css" />
@@ -72,7 +72,13 @@ function _toUpdateProduct(productId){
 	location.href = "${ctx }/product/to_update_product?productId="+productId
 }
 
-function _toDeleteProduct() {
+function _toDeleteProduct(productId){
+	alert("确定删除吗?")
+	location.href = "${ctx }/product/do_delete_product?productId="+productId
+}
+
+
+/* function _toDeleteProduct(productId) {
 	var url = "${ctx}/product/do_delete_product";
 	var param = $("#productForm").serialize();
 	$.post(url, param, function(data) {
@@ -82,7 +88,7 @@ function _toDeleteProduct() {
 				icon : 6, btn:['确定'], title:'信息'
 			}, function(index) {
 				layer.close(index);
-				window.location.href = "${ctx }/product/to_product_list";
+				window.location.href = "${ctx }/product/to_product_list"+productId;
 			});
 		} else {
 			layer.alert(data.msg, {
@@ -90,7 +96,7 @@ function _toDeleteProduct() {
 			});
 		}
 	});
-}
+} */
 
 </script>
 
@@ -110,7 +116,7 @@ label {
 	<div class="row">
 		<div class="col-lg-12 now_position">
 			<i class="icon iconfont" style="font-family: 'Arial Black', Gadget, sans-serif; font-size: 14px;">&#xe62d;</i>
-				&nbsp;首页&nbsp;/&nbsp;系统管理&nbsp;/&nbsp;人员管理
+				&nbsp;产品列表
 		</div>
 	</div>
 	<div class="space1"></div>
@@ -190,6 +196,7 @@ label {
 												<tr>
 													<th class="center">序号</th>
 													<th class="center">产品名称</th>
+													<th class="center">公司名称</th>
 													<th class="center">产品价格</th>
 													<th class="center">生产时间</th>
 													<th class="center">操作</th>
@@ -200,6 +207,7 @@ label {
 													<tr>
 														<td align="center">${index.index+1 }</td>
 														<td>${product.productName }</td>
+														<td>${product.companyName }</td>
 														<td>${product.productPrice }</td>
 														<td><fmt:formatDate value="${product.productTime}" pattern="yyyy-mm-dd HH:mm:ss"/></td>
 														<%-- <td>${product.productTime }</td> --%>

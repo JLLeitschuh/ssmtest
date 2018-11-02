@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  @author： fu    @time：2018年10月28日 下午6:55:03 
@@ -37,6 +38,12 @@ public class ProductModel {
 	 */
 	@Column(name="product_name")
 	private String productName;
+	
+	/*
+	 * 公司名称
+	 */
+	@Transient
+	private String companyName;
 	
 	/*
 	 * 产品价格
@@ -90,12 +97,15 @@ public class ProductModel {
 		this.productTime = productTime;
 	}
 
-	@Override
-	public String toString() {
-		return "ProductModel [id=" + id + ", companyId=" + companyId + ", productName="
-				+ productName + ", productPrice=" + productPrice + ", productTime=" + productTime
-				+ "]";
+
+	public String getCompanyName() {
+		return companyName;
 	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
 	
 	
 }

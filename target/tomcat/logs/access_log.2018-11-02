@@ -1,0 +1,4 @@
+0:0:0:0:0:0:0:1 - - [02/Nov/2018:11:46:03 +0800] "POST /product/to_product_list HTTP/1.1" 200 8422 http-bio-8080-exec-1 968
+0:0:0:0:0:0:0:1 - - [02/Nov/2018:11:46:06 +0800] "GET /product/do_delete_product?productId=53 HTTP/1.1" 404 1033 http-bio-8080-exec-3 30
+0:0:0:0:0:0:0:1 - - [02/Nov/2018:11:50:15 +0800] "GET /product/do_delete_product?productId=53 HTTP/1.1" 404 1033 http-bio-8080-exec-5 366
+0:0:0:0:0:0:0:1 - - [02/Nov/2018:11:50:16 +0800] "GET /product/do_delete_product?productId=53 HTTP/1.1" 404 1033 http-bio-8080-exec-7 189

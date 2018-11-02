@@ -36,7 +36,6 @@ label {
 <script type="text/javascript">
 
 	function _doAddProduct() {
-		alert('xx')
 		var url = "${ctx}/product/do_add_product";
 		var param = $("#productForm").serialize();
 		$.post(url, param, function(data) {
@@ -69,7 +68,7 @@ label {
 	<div class="row">
 		<div class="col-lg-12 now_position">
 			<i class="icon iconfont" style="font-family: 'Arial Black', Gadget, sans-serif; font-size: 14px;">&#xe62d;</i>
-			&nbsp;首页&nbsp;/&nbsp;系统管理&nbsp;/&nbsp;人员新增
+			&nbsp;产品新增
 		</div>
 	</div>
 	<div class="space1"></div>
