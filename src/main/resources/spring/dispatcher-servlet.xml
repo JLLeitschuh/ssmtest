@@ -17,7 +17,7 @@
 	<context:component-scan base-package="com.cjl.web.controller">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
-	<!-- <context:component-scan base-package="com.cjl"/> -->
+	<!-- <context:component-scan base-package="com.cjl"/> -->  
 
 	 <!-- 启用默认配置 -->
     <mvc:annotation-driven>
@@ -49,8 +49,10 @@
 	<!-- springmvc用于文件上传 -->
 	<!-- maxUploadSize：最大上传文件的大小，单位为字节； defaultEncoding：请求的编码格式，默认为iso-8859-1 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 默认编码 -->
         <property name="defaultEncoding" value="utf-8"></property>
         <property name="maxUploadSize" value="1048576000"></property>
-        <property name="maxInMemorySize" value="40960"></property>
+        <property name="uploadTempDir" value="fileUpload/temp"></property>
+       <!--  <property name="maxInMemorySize" value="40960"></property> -->
    </bean>
 </beans>

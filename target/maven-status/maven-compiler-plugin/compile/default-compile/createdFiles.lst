@@ -8,6 +8,7 @@ base\util\BaseVo.class
 com\cjl\company\service\CompanyService.class
 com\cjl\product\service\ProductService.class
 com\cjl\web\controller\ProductController.class
+com\cjl\web\controller\FileUploadController.class
 com\cjl\company\service\impl\CompanyServiceImpl.class
 com\cjl\company\mapper\CompanyMapper.class
 com\cjl\product\mapper\ProductMapper.class

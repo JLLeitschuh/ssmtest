@@ -1,4 +1,0 @@
-0:0:0:0:0:0:0:1 - - [02/Nov/2018:14:20:58 +0800] "GET /product/to_product_list HTTP/1.1" 200 13969 http-bio-8080-exec-1 966
-0:0:0:0:0:0:0:1 - - [02/Nov/2018:14:21:35 +0800] "GET /product/to_add_product HTTP/1.1" 200 5017 http-bio-8080-exec-3 89
-0:0:0:0:0:0:0:1 - - [02/Nov/2018:14:21:58 +0800] "POST /product/do_add_product HTTP/1.1" 200 54 http-bio-8080-exec-5 60
-0:0:0:0:0:0:0:1 - - [02/Nov/2018:14:22:19 +0800] "GET /product/to_product_list HTTP/1.1" 200 13969 http-bio-8080-exec-6 39
