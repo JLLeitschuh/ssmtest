@@ -21,12 +21,12 @@
 		<repository>
 			<id>nexus-releases</id>
 			<name>nexus releases</name>
-			<url>http://10.0.0.12:8081/content/repositories/releases</url>
+			<url>https://10.0.0.12:8081/content/repositories/releases</url>
 		</repository>
 		<snapshotRepository>
 			<id>nexus-snapshots</id>
 			<name>nexus snapshots</name>
-			<url>http://10.0.0.12:8081/content/repositories/snapshots</url>
+			<url>https://10.0.0.12:8081/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 
